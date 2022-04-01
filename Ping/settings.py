@@ -21,3 +21,4 @@ game_started = False
 ball = [350, 250, "Left", "Down"]
 font1 = pygame.font.SysFont('A totally real font', 100)
 font2 = pygame.font.SysFont('A totally real font', 40)
+enable_audio = True

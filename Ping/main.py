@@ -9,6 +9,10 @@ import pygame
 from pygame.locals import *
 pygame.init()
 
+def playsound(channel,audiofile):
+    if enable_audio == True:
+        pygame.mixer.Channel(channel).play(pygame.mixer.Sound(audiofile))
+
 def image_display(surface, filename, xy):
     img = pygame.image.load(filename)
     surface.blit(img, xy)
@@ -59,12 +63,14 @@ while not done:
                 else:
                     ball[3] = "Up"
                     ball[1] -= ballspeed
+                    playsound(1, "Sounds/hit.wav")
             elif ball[3] == "Up":
                 if ball[1] > game_border2:
                     ball[1] -= ballspeed
                 else:
                      ball[3] = "Down"
                      ball[1] += ballspeed
+                     playsound(1, "Sounds/hit.wav")
             if ball[2] == "Left":
                 if ball[0] > game_border2:
                     ball[0] -= ballspeed
@@ -103,8 +109,10 @@ while not done:
 
         if pygame.Rect.colliderect(ball_square, player1_square) == 1:
             ball[2] = "Right"
+            playsound(1, "Sounds/hit.wav")
         if pygame.Rect.colliderect(ball_square, player2_square) == 1:
             ball[2] = "Left"
+            playsound(1, "Sounds/hit.wav")
         pygame.display.flip()
 # Quite the execution when clicking on close
 pygame.quit()
