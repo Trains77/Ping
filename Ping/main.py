@@ -17,6 +17,8 @@ def image_display(surface, filename, xy):
     img = pygame.image.load(filename)
     surface.blit(img, xy)
 def newPlayer(x, y, userID):
+    move_down = move_Down
+    move_up = move_Up
     if userID == 0:
         if state[pygame.K_w]:
             if not y <= game_border2:
@@ -25,14 +27,31 @@ def newPlayer(x, y, userID):
             if not y + square_length - square_size >= game_border1:
                 y = y + playerspeed
     elif userID == 1:
-        if state[pygame.K_UP]:
-            if not y <= game_border2:
-                y = y - playerspeed
-        if state[pygame.K_DOWN]:
-            if not y + square_length - square_size >= game_border1:
-                y = y + playerspeed
+        if bot_player_2 == False:
+            if state[pygame.K_UP]:
+                if not y <= game_border2:
+                    y = y - playerspeed
+            if state[pygame.K_DOWN]:
+                if not y + square_length - square_size >= game_border1:
+                    y = y + playerspeed
+        else:
+            if ball[1] - y <= 30:
+                move_down = False
+            elif ball[1] - y >= 80:
+                move_down = True
+            if y - ball[1] <= -29:
+                move_up = False
+            elif y - ball[1] <= -9:
+                move_up = True
 
-    return x, y
+            if ball[0] >= 325:
+                if move_up == True:
+                    if not y <= game_border2:
+                        y -= playerspeed
+                elif move_down == True:
+                    if not y + square_length - square_size >= game_border1:
+                        y += playerspeed
+    return x, y, move_down, move_Up
 # Display
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption(GameName)
@@ -81,8 +100,8 @@ while not done:
                     ball[0] += ballspeed
                 else:
                     game_started = False
-            player1[0], player1[1] = newPlayer(player1[0],player1[1],0)
-            player2[0], player2[1] = newPlayer(player2[0],player2[1],1)
+            player1[0], player1[1], move_Down, move_Up = newPlayer(player1[0],player1[1],0)
+            player2[0], player2[1], move_Down, move_Up = newPlayer(player2[0],player2[1],1)
         else:
             player1 = [25,250]
             player2 = [655, 250]
