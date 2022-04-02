@@ -1,5 +1,5 @@
 # Script Modules
-import time, math, sys, colored, os
+import time, sys, colored, os, random, math
 from time import sleep
 from settings import *
 #from colored import fore, back, style
@@ -103,9 +103,19 @@ while not done:
             player1[0], player1[1], move_Down, move_Up = newPlayer(player1[0],player1[1],0)
             player2[0], player2[1], move_Down, move_Up = newPlayer(player2[0],player2[1],1)
         else:
+            left = int(math.ceil(random.randint(1,2)))
+            right = int(math.ceil(random.randint(1,2)))
+            if left == 1:
+                Left = "Left"
+            else:
+                Left = "Right"
+            if right == 1:
+                Up = "Up"
+            else:
+                Up = "Down"
             player1 = [25,250]
             player2 = [655, 250]
-            ball = [350, 250, "Left", "Down"]
+            ball = [350, 250, Left, Up]
 
             if mouse_button_list[0] == True:
                 cursor_square = pygame.draw.rect(screen, (255,0,0), [cursor_pos[0], cursor_pos[1], square_size,square_size])
