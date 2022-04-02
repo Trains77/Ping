@@ -21,6 +21,10 @@ def newPlayer(x, y, userID):
     move_up = move_Up
     move_up1 = move_Up1
     move_down1 = move_Down1
+    move_up3 = move_Up3
+    move_down3 = move_Down3
+    move_down2 = move_Down2
+    move_up2 = move_Up2
     if userID == 0:
         if bot_player_1 == False:
             if state[pygame.K_w]:
@@ -39,11 +43,27 @@ def newPlayer(x, y, userID):
             elif y - ball[1] <= -9:
                 move_up1 = True
 
+            if ball2[1] - y <= 30:
+                move_down2 = False
+            elif ball2[1] - y >= 80:
+                move_down2 = True
+            if y - ball2[1] <= -29:
+                move_up2 = False
+            elif y - ball[1] <= -9:
+                move_up2 = True
+
             if ball[0] <= 325:
                 if move_up1 == True:
                     if not y <= game_border2:
                         y -= playerspeed
                 elif move_down1 == True:
+                    if not y + square_length - square_size >= game_border1:
+                        y += playerspeed
+            if ball2[0] <= 325:
+                if move_up2 == True:
+                    if not y <= game_border2:
+                        y -= playerspeed
+                elif move_down2 == True:
                     if not y + square_length - square_size >= game_border1:
                         y += playerspeed
     elif userID == 1:
@@ -64,6 +84,15 @@ def newPlayer(x, y, userID):
             elif y - ball[1] <= -9:
                 move_up = True
 
+            if ball2[1] - y <= 30:
+                move_down3 = False
+            elif ball2[1] - y >= 80:
+                move_down3 = True
+            if y - ball2[1] <= -29:
+                move_up3 = False
+            elif y - ball2[1] <= -9:
+                move_up3 = True
+
             if ball[0] >= 325:
                 if move_up == True:
                     if not y <= game_border2:
@@ -71,7 +100,14 @@ def newPlayer(x, y, userID):
                 elif move_down == True:
                     if not y + square_length - square_size >= game_border1:
                         y += playerspeed
-    return x, y, move_down, move_up, move_down1, move_up1
+            if ball2[0] >= 325:
+                if move_up3 == True:
+                    if not y <= game_border2:
+                        y -= playerspeed
+                elif move_down3 == True:
+                    if not y + square_length - square_size >= game_border1:
+                        y += playerspeed
+    return x, y, move_down, move_up, move_down1, move_up1, move_down3, move_up3, move_down2, move_up2
 # Display
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption(GameName)
@@ -153,8 +189,8 @@ while not done:
                         ball2[0] += ballspeed
                     else:
                         game_started = False
-            player1[0], player1[1], move_Down, move_Up, move_Down1, move_Up1 = newPlayer(player1[0],player1[1],0)
-            player2[0], player2[1], move_Down, move_Up, move_Down1, move_Up1 = newPlayer(player2[0],player2[1],1)
+            player1[0], player1[1], move_Down, move_Up, move_Down1, move_Up1, move_Down3, move_Up3, move_Down2, move_Up2 = newPlayer(player1[0],player1[1],0)
+            player2[0], player2[1], move_Down, move_Up, move_Down1, move_Up1, move_Down3, move_Up3, move_Down2, move_Up2 = newPlayer(player2[0],player2[1],1)
         else:
             ballspeed = ball_speed
             left = int(math.ceil(random.randint(1,2)))

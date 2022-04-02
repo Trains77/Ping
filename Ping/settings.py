@@ -9,12 +9,12 @@ enable_audio = True # Enable audio
 playerspeed = 10 # How fast the player moves
 
 # Gamemodes
-bot_player_2 = True # Use a bot for player 2, does not work with Two_balls
-bot_player_1 = True # Use a bot for player 1, does not work with Two_balls
+bot_player_2 = True # Use a bot for player 2
+bot_player_1 = True # Use a bot for player 1
 increase_ball_speed = False # Increase the ball's speed over time
-Two_balls = False # Have 2 balls instead of one, does not work with bot_player_2
+Two_balls = True # Have 2 balls instead of one
 
-# Internal variables
+# Internal variables, DO NOT TOUCH
 size = [700, 500]
 GameName = "Ping"
 square_color = (255, 255, 255)
@@ -35,5 +35,9 @@ move_Down = True
 move_Up = True
 move_Down1 = True
 move_Up1 = True
+move_Down3 = True
+move_Up3 = True
+move_Up2 = True
+move_Down2 = True
 game_tick = 0
 game_tick2 = 0
