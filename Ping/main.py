@@ -116,7 +116,6 @@ clock = pygame.time.Clock()
 
 while not done:
         clock.tick(fps)
-
         cursor_pos = pygame.mouse.get_pos()
         mouse_button_list = pygame.mouse.get_pressed(num_buttons=3)
         button_pressed = any(mouse_button_list)
@@ -226,7 +225,28 @@ while not done:
             if pygame.Rect.colliderect(cursor_square, start_button) == 1:
                 game_started = True
             # screen.blit(text2, (30, 390))
-
+        if AutoStart == True:
+            if game_started == False:
+                ballspeed = ball_speed
+                left = int(math.ceil(random.randint(1,2)))
+                right = int(math.ceil(random.randint(1,2)))
+                if left == 1:
+                    Left = "Left"
+                    LeftTwo = "Right"
+                else:
+                    Left = "Right"
+                    LeftTwo = "Left"
+                if right == 1:
+                    Up = "Up"
+                    UpTwo = "Down"
+                else:
+                    Up = "Down"
+                    UpTwo = "Up"
+                player1 = [25,250]
+                player2 = [655, 250]
+                ball = [350, 250, Left, Up]
+                ball2 = [350, 250, LeftTwo, UpTwo]
+                game_started = True
         player1_square = pygame.draw.rect(screen, square_color, [player1[0],player1[1],square_size,square_length])
         player2_square = pygame.draw.rect(screen, square_color, [player2[0],player2[1],square_size,square_length])
         ball_square = pygame.draw.rect(screen, square_color, [ball[0],ball[1],square_size,square_size])
