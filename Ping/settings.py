@@ -9,10 +9,10 @@ enable_audio = True # Enable audio
 playerspeed = 10 # How fast the player moves
 
 # Gamemodes
-bot_player_2 = True # Use a bot for player 2
-bot_player_1 = True # Use a bot for player 1
+bot_player_2 = False # Use a bot for player 2
+bot_player_1 = False # Use a bot for player 1
 increase_ball_speed = False # Increase the ball's speed over time
-Two_balls = True # Have 2 balls instead of one
+Two_balls = False # Have 2 balls instead of one
 
 # Internal variables, DO NOT TOUCH
 size = [700, 500]
