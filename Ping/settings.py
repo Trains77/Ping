@@ -8,6 +8,7 @@ ball_speed = 5 # speed the ball moves
 enable_audio = True # Enable audio
 playerspeed = 10 # How fast the player moves
 AutoStart = False # Auto restart when a game ends
+
 # Gamemodes
 bot_player_2 = False # Use a bot for player 2
 bot_player_1 = False # Use a bot for player 1
