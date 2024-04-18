@@ -8,7 +8,7 @@ WASD movement for Player 1
 
 Arrow key movement for Player 2
 
-## Features
+## Settings
 
 Two_balls: Have 2 balls in game instead of one
 
